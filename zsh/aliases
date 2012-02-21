@@ -19,14 +19,26 @@ alias gs='git status'
 alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 
 # rails
+alias be='bundle exec'
 alias sc='script/console'
 alias ss='script/server'
+alias rs='bundle exec rails server'
+alias rc='bundle exec rails console'
 alias sg='script/generate'
-alias a='autotest -rails'
+alias g='bundle exec guard -c'
 alias tlog='tail -f log/development.log'
-alias scaffold='script/generate nifty_scaffold'
 alias migrate='rake db:migrate db:test:clone'
 alias rst='touch tmp/restart.txt'
+alias prep='rake db:migrate && rake db:test:clone_structure'
+alias resetdb='rake db:migrate:reset && rake db:test:clone_structure'
+alias tit='rm -rf server'
+alias restart='touch tmp/restart.txt'
+alias fs='bundle exec foreman start'
+alias work='heroku accounts:set kyan'
+alias personal='heroku accounts:set personal'
 
 # commands starting with % for pasting from web
 alias %=' '
+
+#dns
+alias flushdns='dscacheutil -flushcache'

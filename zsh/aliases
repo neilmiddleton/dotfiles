@@ -13,6 +13,7 @@ alias gp='git push'
 alias gd='git diff'
 alias gc='git commit'
 alias gca='git commit -a'
+alias gcv='git commit -v'
 alias gco='git checkout'
 alias gb='git branch'
 alias gs='git status'
@@ -20,25 +21,38 @@ alias grm="git status | grep deleted | awk '{print \$3}' | xargs git rm"
 
 # rails
 alias be='bundle exec'
-alias sc='script/console'
-alias ss='script/server'
+alias sc='bundle exec script/console'
+alias ss='bundle exec script/server'
 alias rs='bundle exec rails server'
 alias rc='bundle exec rails console'
-alias sg='script/generate'
+alias sg='bundle exec script/generate'
 alias g='bundle exec guard -c'
 alias tlog='tail -f log/development.log'
-alias migrate='rake db:migrate db:test:clone'
+alias migrate='bundle exec rake db:migrate db:test:clone'
 alias rst='touch tmp/restart.txt'
-alias prep='rake db:migrate && rake db:test:clone_structure'
-alias resetdb='rake db:migrate:reset && rake db:test:clone_structure'
+alias prep='bundle exec rake db:migrate && rake db:test:clone_structure'
+alias resetdb='bundle exec rake db:migrate:reset && rake db:test:clone_structure'
 alias tit='rm -rf server'
 alias restart='touch tmp/restart.txt'
 alias fs='bundle exec foreman start'
-alias work='heroku accounts:set kyan'
-alias personal='heroku accounts:set personal'
+alias work='bundle exec heroku accounts:set kyan'
+alias personal='bundle exec heroku accounts:set personal'
 
 # commands starting with % for pasting from web
 alias %=' '
 
 #dns
 alias flushdns='dscacheutil -flushcache'
+
+# alias vim='/usr/local/Cellar/macvim/7.3-64/MacVim.app/Contents/MacOS/Vim'
+alias tmux="TERM=screen-256color-bce tmux"
+
+alias gitd='git daemon --base-path=/Users/neil/code --export-all &'
+
+
+alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+alias elasticstart='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.19.4/config/elasticsearch.yml'
+alias openelastic='open /Users/neil/code/elasticsearch-head/index.html'
+alias mysqlstart='mysql.server start'
+alias mysqlstop='mysql.server stop'

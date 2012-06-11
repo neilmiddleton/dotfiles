@@ -58,8 +58,6 @@ function prompt_func() {
     else
         PS1="${prompt} ${RED}➔${COLOR_NONE} "
     fi
-    
-    PS1="\$(~/.rvm/bin/rvm-prompt i v g) $PS1"
 }
  
 PROMPT_COMMAND=prompt_func

@@ -1,8 +1,18 @@
+call pathogen#infect()
+
 let mapleader = ","
 
+map <leader>t :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
+
+nmap <leader>n :NERDTreeToggle<cr>
+
 set guifont=Inconsolata:h18
-color molokai
 set wildchar=<Tab> wildmenu wildmode=full
+
+set t_Co=256
+set background = "dark"
+colorscheme molokai
 
 set grepprg=ack
 set grepformat=%f:%l:%m
@@ -20,3 +30,14 @@ syntax on
 if has("gui_running")
   set guioptions=egmrt
 endif
+
+autocmd BufWritePre * :%s/\s\+$//e
+
+set directory=~/.tmp,~/tmp,/var/tmp,/tmp
+set backupdir=~/.tmp,~/tmp,/var/tmp,/tmp
+
+let g:Powerline_symbols = 'fancy'
+let g:ctrlp_lazy_update = 0
+
+autocmd BufNewFile,BufRead *.thor set filetype=ruby
+autocmd BufNewFile,BufRead Gemfile set filetype=ruby

@@ -1,3 +1,4 @@
+alias please='sudo'
 # cd
 alias ..='cd ..'
 
@@ -52,7 +53,9 @@ alias gitd='git daemon --base-path=/Users/neil/code --export-all &'
 
 alias pgstart='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pgstop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
-alias elasticstart='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.19.4/config/elasticsearch.yml'
+alias elasticstart='elasticsearch -f -D es.config=/usr/local/Cellar/elasticsearch/0.19.8/config/elasticsearch.yml'
 alias openelastic='open /Users/neil/code/elasticsearch-head/index.html'
 alias mysqlstart='mysql.server start'
 alias mysqlstop='mysql.server stop'
+alias mongostart='launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist'
+alias mongostop='launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist'

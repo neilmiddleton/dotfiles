@@ -1,3 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/Users/neil/code/M3'
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/Users/neil/code/personal'
+let g:netrw_dirhist_2='/Users/neil/code/personal/vision_engineering'
+let g:netrw_dirhist_3='/Users/neil/code/personal/bloog'
+let g:netrw_dirhist_4='/Users/neil/code/personal/visioneng'
+let g:netrw_dirhist_5='/Users/neil/code/visioneng'
+let g:netrw_dirhist_6='/Users/neil/code/lal-schools-cms'
+let g:netrw_dirhist_7='/Users/neil/.oh-my-zsh'

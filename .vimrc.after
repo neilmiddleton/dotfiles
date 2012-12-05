@@ -7,7 +7,6 @@ map <leader>b :CtrlPBuffer<cr>
 
 nmap <leader>n :NERDTreeToggle<cr>
 
-set guifont=Inconsolata:h18
 set wildchar=<Tab> wildmenu wildmode=full
 
 set t_Co=256
@@ -22,6 +21,7 @@ set smarttab
 set shiftwidth=2
 set expandtab
 set backspace=start,indent
+set pastetoggle=<F2>
 
 set number
 set hlsearch
@@ -38,6 +38,31 @@ set backupdir=~/.tmp,~/tmp,/var/tmp,/tmp
 
 let g:Powerline_symbols = 'fancy'
 let g:ctrlp_lazy_update = 0
+let g:ctrlp_working_path_mode = 'ra'
 
 autocmd BufNewFile,BufRead *.thor set filetype=ruby
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+autocmd BufNewFile,BufRead *.rb set filetype=ruby
+autocmd FileType ruby set commentstring=#\ %s
+
+filetype plugin indent on
+autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+
+
+set nowrap
+
+" use Ctrl+L to toggle the line number counting method
+function! g:ToggleNuMode()
+      if(&rnu == 1)
+        set nu
+  else
+    set rnu
+  endif
+endfunc
+nnoremap <C-L> :call g:ToggleNuMode()<cr>
+
+" Use ctrl-[hjkl] to select the active split!
+nmap <silent> <c-k> :wincmd k<CR>
+nmap <silent> <c-j> :wincmd j<CR>
+nmap <silent> <c-h> :wincmd h<CR>
+nmap <silent> <c-l> :wincmd l<CR>

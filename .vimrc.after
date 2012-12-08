@@ -1,11 +1,13 @@
 call pathogen#infect()
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Important basic setup stuff
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let mapleader = ","
-
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
-
 nmap <leader>n :NERDTreeToggle<cr>
+map <leader>r :call RunCurrentTest()<CR>
 
 set wildchar=<Tab> wildmenu wildmode=full
 
@@ -22,14 +24,18 @@ set shiftwidth=2
 set expandtab
 set backspace=start,indent
 set pastetoggle=<F2>
-
+set noesckeys
+set shiftround
 set number
 set hlsearch
+set nowrap
 syntax on
 
-if has("gui_running")
-  set guioptions=egmrt
-endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Don't look at stuff we can't open
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:fuzzy_ignore = "*.png;*.PNG;*.JPG;*.jpg;*.GIF;*.gif;vendor/**;coverage/**;tmp/**;rdoc/**"
 
 autocmd BufWritePre * :%s/\s\+$//e
 
@@ -46,15 +52,12 @@ autocmd BufNewFile,BufRead *.rb set filetype=ruby
 autocmd FileType ruby set commentstring=#\ %s
 
 filetype plugin indent on
-autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
-
-
-set nowrap
+autocmd FileType ruby,haml,eruby,rake,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 
 " use Ctrl+L to toggle the line number counting method
 function! g:ToggleNuMode()
-      if(&rnu == 1)
-        set nu
+  if(&rnu == 1)
+    set nu
   else
     set rnu
   endif
@@ -66,3 +69,64 @@ nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
+
+set tw=72
+set cc=+1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Test-running stuff
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RunCurrentTest()
+  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
+  if in_test_file
+    call SetTestFile()
+
+echom g.bjo_test_file
+    if match(expand('%'), '\.feature$') != -1
+      call SetTestRunner("!cucumber")
+      exec g:bjo_test_runner g:bjo_test_file
+    elseif match(expand('%'), '_spec\.rb$') != -1
+      call SetTestRunner("!rspec")
+      exec g:bjo_test_runner g:bjo_test_file
+    else
+      call SetTestRunner("!ruby -Itest")
+      exec g:bjo_test_runner g:bjo_test_file
+    endif
+  else
+    exec g:bjo_test_runner g:bjo_test_file
+  endif
+endfunction
+
+function! SetTestRunner(runner)
+  let g:bjo_test_runner=a:runner
+endfunction
+
+function! RunCurrentLineInTest()
+  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
+  if in_test_file
+    call SetTestFileWithLine()
+  end
+
+  exec "!rspec" g:bjo_test_file . ":" . g:bjo_test_file_line
+endfunction
+
+function! SetTestFile()
+  let g:bjo_test_file=@%
+endfunction
+
+function! SetTestFileWithLine()
+  let g:bjo_test_file=@%
+  let g:bjo_test_file_line=line(".")
+endfunction
+
+function! CorrectTestRunner()
+  if match(expand('%'), '\.feature$') != -1
+    return "cucumber"
+  elseif match(expand('%'), '_spec\.rb$') != -1
+    return "rspec"
+  else
+    return "ruby"
+  endif
+endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

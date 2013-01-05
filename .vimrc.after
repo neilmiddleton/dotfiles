@@ -1,4 +1,5 @@
 call pathogen#infect()
+set shell=/bin/sh
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important basic setup stuff
@@ -8,6 +9,9 @@ map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 nmap <leader>n :NERDTreeToggle<cr>
 map <leader>r :call RunCurrentTest()<CR>
+
+" Let NERDTree work as a split explorer
+let NERDTreeHijackNetrw=1
 
 set wildchar=<Tab> wildmenu wildmode=full
 
@@ -70,63 +74,5 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
-set tw=72
+set tw=80
 set cc=+1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Test-running stuff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! RunCurrentTest()
-  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-  if in_test_file
-    call SetTestFile()
-
-echom g.bjo_test_file
-    if match(expand('%'), '\.feature$') != -1
-      call SetTestRunner("!cucumber")
-      exec g:bjo_test_runner g:bjo_test_file
-    elseif match(expand('%'), '_spec\.rb$') != -1
-      call SetTestRunner("!rspec")
-      exec g:bjo_test_runner g:bjo_test_file
-    else
-      call SetTestRunner("!ruby -Itest")
-      exec g:bjo_test_runner g:bjo_test_file
-    endif
-  else
-    exec g:bjo_test_runner g:bjo_test_file
-  endif
-endfunction
-
-function! SetTestRunner(runner)
-  let g:bjo_test_runner=a:runner
-endfunction
-
-function! RunCurrentLineInTest()
-  let in_test_file = match(expand("%"), '\(.feature\|_spec.rb\|_test.rb\)$') != -1
-  if in_test_file
-    call SetTestFileWithLine()
-  end
-
-  exec "!rspec" g:bjo_test_file . ":" . g:bjo_test_file_line
-endfunction
-
-function! SetTestFile()
-  let g:bjo_test_file=@%
-endfunction
-
-function! SetTestFileWithLine()
-  let g:bjo_test_file=@%
-  let g:bjo_test_file_line=line(".")
-endfunction
-
-function! CorrectTestRunner()
-  if match(expand('%'), '\.feature$') != -1
-    return "cucumber"
-  elseif match(expand('%'), '_spec\.rb$') != -1
-    return "rspec"
-  else
-    return "ruby"
-  endif
-endfunction
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

@@ -9,6 +9,8 @@
 ::1             localhost
 fe80::1%lo0	localhost
 
+127.0.0.1 dev.neilmiddleton.com
+
 # This hosts file is brought to you by Dan Pollock and can be found at
 # http://someonewhocares.org/hosts/
 # You are free to copy and distribute this file, as long the original

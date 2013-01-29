@@ -3,6 +3,7 @@
 	email = neil@neilmiddleton.com
 [core]
 	editor = /usr/bin/vim
+	excludesfile = /Users/neil/.gitignore_global
 [alias]
 	switch = !legit switch \"$@\"
 	branches = !legit branches

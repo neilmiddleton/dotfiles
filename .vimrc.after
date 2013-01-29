@@ -17,6 +17,7 @@ set wildchar=<Tab> wildmenu wildmode=full
 
 set t_Co=256
 set background = "dark"
+set mouse=a
 colorscheme molokai
 
 set grepprg=ack
@@ -53,10 +54,11 @@ let g:ctrlp_working_path_mode = 'ra'
 autocmd BufNewFile,BufRead *.thor set filetype=ruby
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
 autocmd BufNewFile,BufRead *.rb set filetype=ruby
+autocmd BufNewFile,BufRead *.ru set filetype=ruby
 autocmd FileType ruby set commentstring=#\ %s
 
 filetype plugin indent on
-autocmd FileType ruby,haml,eruby,rake,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+autocmd FileType ru,ruby,haml,eruby,rake,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 
 " use Ctrl+L to toggle the line number counting method
 function! g:ToggleNuMode()

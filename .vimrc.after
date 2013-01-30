@@ -78,3 +78,5 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 set tw=80
 set cc=+1
+
+source ~/.vim/db_configs

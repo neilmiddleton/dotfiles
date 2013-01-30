@@ -1,0 +1,2 @@
+" PGSQL
+let g:dbext_default_profile_ccs_development = 'type=PGSQL:user=neil:host=localhost:dbname=ccs_development'

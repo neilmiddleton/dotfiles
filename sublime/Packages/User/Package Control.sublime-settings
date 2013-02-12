@@ -1,0 +1,18 @@
+{
+	"installed_packages":
+	[
+		"CoffeeScript",
+		"DetectSyntax",
+		"Gist",
+		"Git",
+		"Guard",
+		"Haml",
+		"Markdown Preview",
+		"Package Control",
+		"SCSS",
+		"SublimeLinter",
+		"SublimeREPL",
+		"Theme - Soda",
+		"Tomorrow Color Schemes"
+	]
+}

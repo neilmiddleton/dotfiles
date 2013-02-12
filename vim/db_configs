@@ -1,3 +1,4 @@
 " PGSQL
 let g:dbext_default_profile_ccs_development = 'type=PGSQL:user=neil:host=localhost:dbname=ccs_development'
 let g:dbext_default_profile_bisley_development = 'type=PGSQL:user=neil:host=localhost:dbname=bisley_development'
+let g:dbext_default_profile_ftd_messaging = 'type=PGSQL:user=neil:host=localhost:dbname=ftd_messaging_dev'

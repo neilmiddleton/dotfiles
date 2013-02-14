@@ -2,3 +2,4 @@
 -foo
 -CalendarItem
 -$:
+-puts "hello";

@@ -24,6 +24,7 @@
 	"highlight_line": false,
 	"ignored_packages":
 	[
+		"Vintage"
 	],
 	"line_padding_bottom": 2,
 	"rulers":

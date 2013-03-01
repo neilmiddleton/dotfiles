@@ -8,7 +8,6 @@ let mapleader = ","
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
 nmap <leader>n :NERDTreeToggle<cr>
-map <leader>r :call RunCurrentTest()<CR>
 
 " Let NERDTree work as a split explorer
 let NERDTreeHijackNetrw=1
@@ -60,16 +59,6 @@ autocmd FileType ruby set commentstring=#\ %s
 filetype plugin indent on
 autocmd FileType ru,ruby,haml,eruby,rake,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 
-" use Ctrl+L to toggle the line number counting method
-function! g:ToggleNuMode()
-  if(&rnu == 1)
-    set nu
-  else
-    set rnu
-  endif
-endfunc
-nnoremap <C-L> :call g:ToggleNuMode()<cr>
-
 " Use ctrl-[hjkl] to select the active split!
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
@@ -78,5 +67,3 @@ nmap <silent> <c-l> :wincmd l<CR>
 
 set tw=80
 set cc=+1
-
-source ~/.vim/db_configs

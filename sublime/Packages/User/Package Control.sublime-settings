@@ -3,6 +3,7 @@
 	[
 		"CoffeeScript",
 		"DetectSyntax",
+		"Enhanced Clojure",
 		"Gist",
 		"Git",
 		"Github Tools",
@@ -10,6 +11,7 @@
 		"Haml",
 		"Markdown Preview",
 		"Package Control",
+		"Rails Related Files",
 		"SCSS",
 		"Sublime Finder",
 		"SublimeLinter",

@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/neil/code/bisley.com'
-let g:netrw_dirhist_2='/Users/neil/code/personal/dnschecker'
-let g:netrw_dirhist_3='/Users/neil/Dropbox/dotfiles'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/neil/code/kyan/bisley.com/app/controllers'
+let g:netrw_dirhist_2='/Users/neil/code/kyan/bisley.com'
+let g:netrw_dirhist_3='/Users/neil/code/kyan/bisley.com/app'
+let g:netrw_dirhist_4='/Users/neil/code/kyan/bisley.com/app/controllers'
+let g:netrw_dirhist_5='/Users/neil/code/kyan/bisley.com/app/controllers/manage'
+let g:netrw_dirhist_6='/Users/neil/code/kyan/bisley.com'

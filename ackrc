@@ -1,0 +1,12 @@
+--type-add=js=.coffee
+--type-add=ruby=.haml
+--type-add=css=.sass,.scss
+--type-set=coffee=.coffee
+
+--type-set
+ignorables=.log,.tmp,.pdf
+--ignore-dir=vendor
+--ignore-dir=log
+--ignore-dir=tmp
+--ignore-dir=doc
+--ignore-dir=coverage

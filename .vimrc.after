@@ -73,3 +73,13 @@ map <C-l> <C-W>l<C-W>_
 
 set tw=80
 set cc=+1
+
+" Insert a hash rocket with <c-l>
+imap <c-l> <space>=><space>
+
+" Clear the search buffer when hitting return
+function! MapCR()
+  nnoremap <cr> :nohlsearch<cr>
+endfunction
+call MapCR()
+nnoremap <leader><leader> <c-^>

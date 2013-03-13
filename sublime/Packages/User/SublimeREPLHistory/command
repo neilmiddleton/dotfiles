@@ -1,7 +1,0 @@
--puts "Hello world"
--foo
--CalendarItem
--$:
--puts "hello";
--(1..10).collect{|a| puts a}
--(1..10).collect{|x| puts x }

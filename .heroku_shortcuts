@@ -1,0 +1,46 @@
+alias hs="heroku sudo"
+alias h="heroku"
+
+alias hc="hs config -a "
+alias ha="hs addons -a "
+alias hi="hs info -a "
+alias hp="hs ps -a "
+alias hb="hs run bash -a "
+alias hu="hs user:info -x --user "
+
+alias hsa="hs sharing:add neil@heroku.com  -a "
+alias hsr="hs sharing:remove neil@heroku.com -a "
+alias hnr="hs addons:open newrelic -a "
+
+alias hrgc="hs repo:gc -a "
+
+# show configs related to postgres
+hci() {
+  heroku sudo config -a $1 | grep -i post
+}
+
+hpi() {
+  heroku sudo pg:info -a $1
+}
+
+hps() {
+  heroku sudo ps -a $1
+}
+
+hsi() {
+  heroku sudo info -xa $1
+}
+
+hsl() {
+  heroku sudo logs -t -a $1
+}
+
+hslp() {
+  heroku sudo logs -t -p postgres -a $1
+}
+
+# restore to a local db from a dump file
+restore_local() {
+  pg_restore --verbose --clean --no-acl --no-owner -h localhost -U neil -d $2
+$1
+}

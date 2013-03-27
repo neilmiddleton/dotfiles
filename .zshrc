@@ -1,7 +1,8 @@
 export EDITOR=/usr/bin/vim
 bindkey -v
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 
 # Colors
 autoload -U colors
@@ -15,7 +16,7 @@ PROMPT='
 %~
 ${smiley}  %{$reset_color%}'
 
-RPROMPT='%{$fg[white]%} $(~/.rbenv/bin/rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
+# RPROMPT='%{$fg[white]%} $(~/.rbenv/bin/rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 
 # Show completion on first TAB
 setopt menucomplete
@@ -24,7 +25,8 @@ setopt menucomplete
 autoload compinit
 compinit
 
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
+# source '~/.rbenv/completions/rbenv.zsh'
 
 # Aliases
 alias ..='cd ..'
@@ -37,3 +39,9 @@ alias fs='bundle exec foreman start'
 alias %=' '
 alias flushdns='dscacheutil -flushcache'
 alias h='heroku'
+alias hs='heroku sudo'
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+source "/Users/neil/Dropbox/dotfiles/.heroku_shortcuts"

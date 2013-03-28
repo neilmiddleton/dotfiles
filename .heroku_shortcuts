@@ -3,17 +3,25 @@ alias h="heroku"
 
 alias hc="hs config -a "
 alias ha="hs addons -a "
-alias hi="hs info -a "
+# alias hi="hs info -a "
 alias hp="hs ps -a "
 alias hb="hs run bash -a "
 alias hu="hs user:info -x --user "
 alias hd="hs domains -a "
+alias hl="hs logs -t -a "
 
 alias hsa="hs sharing:add neil@heroku.com  -a "
 alias hsr="hs sharing:remove neil@heroku.com -a "
 alias hnr="hs addons:open newrelic -a "
 
 alias hrgc="hs repo:gc -a "
+
+hi() {
+  heroku sudo info -a $1
+  echo ""
+  echo "Processes:"
+  heroku sudo ps -a $1
+}
 
 # show configs related to postgres
 hci() {

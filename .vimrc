@@ -83,3 +83,8 @@ function! MapCR()
 endfunction
 call MapCR()
 nnoremap <leader><leader> <c-^>
+
+" Go(!)
+set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim
+filetype plugin indent on
+syntax on

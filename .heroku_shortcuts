@@ -9,6 +9,7 @@ alias hb="hs run bash -a "
 alias hu="hs user:info -x --user "
 alias hd="hs domains -a "
 alias hl="hs logs -t -a "
+alias he="hs events -a "
 
 alias hsa="hs sharing:add neil@heroku.com  -a "
 alias hsr="hs sharing:remove neil@heroku.com -a "
@@ -21,6 +22,12 @@ hi() {
   echo ""
   echo "Processes:"
   heroku sudo ps -a $1
+}
+
+hssl() {
+  heroku sudo certs -a $1
+  echo ""
+  heroku sudo certs:info -a $1
 }
 
 # show configs related to postgres

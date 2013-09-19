@@ -1,5 +1,28 @@
-call pathogen#infect()
 set shell=/bin/sh
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Basic vundle setup
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'mileszs/ack.vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'ervandew/supertab'
+Bundle 'scrooloose/syntastic'
+Bundle 'vim-scripts/upAndDown'
+Bundle 'Townk/vim-autoclose'
+Bundle 'tpope/vim-commentary'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'tpope/vim-markdown'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'goldfeld/vim-seek'
+Bundle 'tpope/vim-surround'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important basic setup stuff
@@ -15,12 +38,13 @@ let NERDTreeHijackNetrw=1
 set wildchar=<Tab> wildmenu wildmode=full
 
 set t_Co=256
-set background = "dark"
+set background=dark
 set mouse=a
 colorscheme molokai
 
 set grepprg=ack
 set grepformat=%f:%l:%m
+let g:gitgutter_realtime = 0
 
 set tabstop=2
 set smarttab
@@ -88,3 +112,8 @@ nnoremap <leader><leader> <c-^>
 set rtp+=/usr/local/Cellar/go/1.1.1/misc/vim
 filetype plugin indent on
 syntax on
+
+" Shortcut to rapidly toggle `set list`
+nmap <leader>l :set list!<CR>
+" Use the same symbols as TextMate for tabstops and EOLs
+set listchars=tab:▸\ ,eol:¬

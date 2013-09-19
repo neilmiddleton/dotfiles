@@ -2,8 +2,7 @@ export EDITOR=/usr/bin/vim
 bindkey -v
 
 export PATH="/usr/local/heroku/bin:node_modules/.bin:/usr/local/share/npm/bin:/usr/local/bin:/Users/neil/.rbenv/shims:/Users/neil/.rbenv/bin:$PATH"
-
-# PATH="$HOME/.rbenv/bin:/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+export GOPATH="/usr/local"
 export PGHOST=localhost
 
 # Colors
@@ -13,13 +12,9 @@ setopt prompt_subst
 
 # Prompt
 local smiley="%(?,%{$fg[green]%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})"
-
-# %~ %{$fg[yellow]%} $(~/.rbenv/bin/rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}
 PROMPT='
 %~ $(~/bin/git-cwd-info.rb)%{$reset_color%}
 ${smiley}  %{$reset_color%}'
-
-# RPROMPT='%{$fg[white]%} $(~/.rbenv/bin/rbenv version-name)$(~/bin/git-cwd-info.rb)%{$reset_color%}'
 RPROMPT=''
 
 # Show completion on first TAB
@@ -33,8 +28,17 @@ compinit
 cdpath=(. ~/code/)
 typeset -gU cdpath
 
+# rbenv
 eval "$(rbenv init -)"
 source "$HOME/.rbenv/completions/rbenv.zsh"
+
+# history
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.history
+
+setopt inc_append_history
+setopt share_history
 
 # Aliases
 alias ..='cd ..'

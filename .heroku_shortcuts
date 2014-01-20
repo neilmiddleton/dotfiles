@@ -1,21 +1,42 @@
 alias hs="heroku sudo"
 alias h="heroku"
 
-alias hc="hs config -a "
 alias ha="hs addons -a "
 # alias hi="hs info -a "
 alias hp="hs ps -a "
 alias hb="hs run bash -a "
 alias hu="hs user:info -x --user "
 alias hd="hs domains -a "
-alias hl="hs logs -t -a "
+alias hl="hs logs --tail -a "
 alias he="hs events -a "
 
 alias hsa="hs sharing:add neil@heroku.com  -a "
 alias hsr="hs sharing:remove neil@heroku.com -a "
 alias hnr="hs addons:open newrelic -a "
 
+logs() {
+  hs logs:analyze -a $1
+}
+
+is_heroku() {
+  curl -vL http://$1/F3DA8257-B28C-49DF-AACD-8171464E1D1D 2>&1 | grep -q MochiWeb && echo "yes" || echo "no"
+}
+
+cloneapp() {
+  hsa $1
+  cd ~/code/tmp
+  hs git:clone -a $1
+  cd $1
+  git fetch
+  hsr $1
+}
+
 alias hrgc="hs repo:gc -a "
+
+hc() {
+  echo "$ heroku config -a ${1}"
+  heroku sudo config -a $1
+}
 
 hi() {
   heroku sudo info -x -a $1

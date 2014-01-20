@@ -3,6 +3,13 @@ autoload -U colors
 colors
 setopt prompt_subst
 
+# PATH
+export GOPATH=~/code/go
+export PATH="/usr/local/share/python:node_modules/.bin:/usr/local/heroku/bin:/usr/local/share/npm/bin:/usr/local/bin:/Users/neil/.rbenv/shims::/Users/neil/.rbenv/bin:$PATH"
+export PATH=${GOPATH//://bin:}/bin:$PATH
+# export PATH=$(npm bin):$PATH
+export PGHOST=localhost
+
 # Prompt
 local smiley="%(?,%{$fg[green]%}$%{$reset_color%},%{$fg[red]%}$%{$reset_color%})"
 PROMPT='
@@ -38,18 +45,12 @@ if [[ "$RPS1" == "" && "$RPROMPT" == "" ]]; then
   RPS1='$(vi_mode_prompt_info)'
 fi
 
-# PATH
-export GOROOT=/usr/local/go
-export PATH="/usr/local/heroku/bin:node_modules/.bin:/usr/local/share/npm/bin:/usr/local/bin:/Users/neil/.rbenv/shims:/usr/local/share/python:/Users/neil/.rbenv/bin:$PATH"
-export PATH=$PATH:$GOROOT/bin
-export GOPATH="/usr/local"
-export PGHOST=localhost
 
 # Show completion on first TAB
 setopt menucomplete
 
 # Load completions for Ruby, Git, etc.
-autoload compinit
+autoload -U compinit
 compinit
 
 # Allows me to cd into projects
@@ -70,6 +71,7 @@ setopt inc_append_history
 
 # Aliases
 alias ..='cd ..'
+alias makehash='dd if=/dev/urandom bs=32 count=1 2>/dev/null | openssl base64'
 alias gs='git status'
 alias be='bundle exec'
 alias rs='bundle exec rails server'

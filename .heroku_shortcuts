@@ -22,6 +22,10 @@ is_heroku() {
   curl -vL http://$1/F3DA8257-B28C-49DF-AACD-8171464E1D1D 2>&1 | grep -q MochiWeb && echo "yes" || echo "no"
 }
 
+extend_boot() {
+  heroku sudo caps:add boot_timeout $1 -a $2
+}
+
 cloneapp() {
   hsa $1
   cd ~/code/tmp

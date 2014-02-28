@@ -99,6 +99,3 @@ alias git='gh'
 # includes
 source "/Users/neil/Dropbox/dotfiles/.heroku_shortcuts"
 source "/Users/neil/Dropbox/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-
-# added by travis gem
-source /Users/neil/.travis/travis.sh

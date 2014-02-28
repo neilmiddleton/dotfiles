@@ -1,9 +1,10 @@
-set shell=/bin/sh
+set shell=/bin/zsh
 set runtimepath+=$GOROOT/misc/vim
 
 filetype off
 filetype plugin indent off
 
+imap jj <Esc>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic vundle setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -12,30 +13,32 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'mileszs/ack.vim'
+" Bundle 'ileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'ervandew/supertab'
+" Bundle 'kien/rainbow_parentheses.vim'
+" Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/upAndDown'
-Bundle 'Townk/vim-autoclose'
+" Bundle 'Townk/vim-autoclose'
 Bundle 'tpope/vim-commentary'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'tpope/vim-markdown'
+" Bundle 'airblade/vim-gitgutter'
+" Bundle 'tpope/vim-markdown'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rake'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-bundler'
+" Bundle 'tpope/vim-rake'
+" Bundle 'tpope/vim-rails'
+" Bundle 'tpope/vim-bundler'
 Bundle 'tpope/rbenv-ctags'
-Bundle 'tpope/vim-fugitive'
+" Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'goldfeld/vim-seek'
 Bundle 'tpope/vim-surround'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'mattn/emmet-vim'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'ggreer/the_silver_searcher'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important basic setup stuff
@@ -88,6 +91,8 @@ let g:Powerline_symbols = 'fancy'
 let g:ctrlp_lazy_update = 0
 let g:ctrlp_working_path_mode = 'ra'
 
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
 autocmd FileType ru,ruby,haml,eruby,rake,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
 
 " append _ to expand the split
@@ -103,11 +108,11 @@ set cc=+1
 imap <c-l> <space>=><space>
 
 " Clear the search buffer when hitting return
-function! MapCR()
-  nnoremap <cr> :nohlsearch<cr>
-endfunction
-call MapCR()
-nnoremap <leader><leader> <c-^>
+" function! MapCR()
+"   nnoremap <cr> :nohlsearch<cr>
+" endfunction
+" call MapCR()
+" nnoremap <leader><leader> <c-^>
 
 
 " Shortcut to rapidly toggle `set list`
@@ -131,18 +136,18 @@ augroup rubypath
   autocmd FileType ruby setlocal suffixesadd+=.rb
 augroup END
 
-" Relative lines switch
-function! NumberToggle()
-  if(&relativenumber == 1)
-    let g:relativemode = 0
-    set nornu
-  else
-    let g:relativemode = 1
-    set rnu
-  endif
-endfunc
+" " Relative lines switch
+" function! NumberToggle()
+"   if(&relativenumber == 1)
+"     let g:relativemode = 0
+"     set nornu
+"   else
+"     let g:relativemode = 1
+"     set rnu
+"   endif
+" endfunc
 
-nnoremap <C-m> :call NumberToggle()<cr>
+" nnoremap <C-m> :call NumberToggle()<cr>
 
 filetype plugin indent on
 syntax on

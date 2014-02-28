@@ -20,6 +20,8 @@ RPROMPT=''
 # Vim all the things
 export EDITOR=/usr/bin/vim
 bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey '^R' history-incremental-search-backward
 
 function zle-keymap-select zle-line-init zle-line-finish {
   if (( ${+terminfo[smkx]} )); then
@@ -36,7 +38,7 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 if [[ "$MODE_INDICATOR" == "" ]]; then
-  MODE_INDICATOR="%{$fg[red]%}[ VIM ]%{$reset_color%}"
+  MODE_INDICATOR="%{$fg[red]%}*%{$reset_color%}"
 fi
 function vi_mode_prompt_info() {
   echo "${${KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
@@ -77,7 +79,9 @@ alias be='bundle exec'
 alias rs='bundle exec rails server'
 alias rc='bundle exec rails console'
 alias restart='touch tmp/restart.txt'
+alias foreman='forego'
 alias fs='forego start'
+alias fr='forego run'
 alias %=' '
 alias flushdns='dscacheutil -flushcache'
 alias h='heroku'
@@ -89,6 +93,8 @@ alias gppm='git push production master'
 alias nr='hs addons:open newrelic:standard -a'
 alias nrp='hs addons:open newrelic:professional -a'
 alias vim='/usr/local/Cellar/vim/7.4/bin/vim'
+alias noorig="find . -name '*.orig' -delete"
+alias git='gh'
 
 # includes
 source "/Users/neil/Dropbox/dotfiles/.heroku_shortcuts"

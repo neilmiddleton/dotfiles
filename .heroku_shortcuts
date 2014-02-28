@@ -26,6 +26,10 @@ extend_boot() {
   heroku sudo caps:add boot_timeout $1 -a $2
 }
 
+ao() {
+  heroku sudo addons:open $1 -a $2
+}
+
 cloneapp() {
   hsa $1
   cd ~/code/tmp
@@ -39,14 +43,14 @@ alias hrgc="hs repo:gc -a "
 
 hc() {
   echo "$ heroku config -a ${1}"
-  heroku sudo config -a $1
+  hk sudo env -a $1
 }
 
 hi() {
-  heroku sudo info -x -a $1
+  hk sudo info -a $1
   echo ""
   echo "Processes:"
-  heroku sudo ps -a $1
+  hk sudo dynos -a $1
 }
 
 hssl() {
@@ -65,11 +69,11 @@ hpi() {
 }
 
 hps() {
-  heroku sudo ps -a $1
+  hk sudo dynos -a $1
 }
 
 hsi() {
-  heroku sudo info -xa $1
+  hk sudo info -a $1
 }
 
 hsl() {

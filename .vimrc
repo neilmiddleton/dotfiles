@@ -1,10 +1,13 @@
 set shell=/bin/zsh
 set runtimepath+=$GOROOT/misc/vim
 
+syntax on
+
 filetype off
 filetype plugin indent off
 
 imap jj <Esc>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic vundle setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -17,7 +20,7 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
 " Bundle 'kien/rainbow_parentheses.vim'
-" Bundle 'ervandew/supertab'
+Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/upAndDown'
 " Bundle 'Townk/vim-autoclose'
@@ -55,10 +58,10 @@ let NERDTreeHijackNetrw=1
 
 set wildchar=<Tab> wildmenu wildmode=full
 
-set t_Co=256
+" set t_Co=256
 set background=dark
 set mouse=a
-colorscheme molokai
+colorscheme solarized
 
 set grepprg=ack
 set grepformat=%f:%l:%m
@@ -107,13 +110,6 @@ set cc=+1
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
 
-" Clear the search buffer when hitting return
-" function! MapCR()
-"   nnoremap <cr> :nohlsearch<cr>
-" endfunction
-" call MapCR()
-" nnoremap <leader><leader> <c-^>
-
 
 " Shortcut to rapidly toggle `set list`
 " nmap <leader>l :set list!<CR>
@@ -135,19 +131,6 @@ augroup rubypath
   autocmd!
   autocmd FileType ruby setlocal suffixesadd+=.rb
 augroup END
-
-" " Relative lines switch
-" function! NumberToggle()
-"   if(&relativenumber == 1)
-"     let g:relativemode = 0
-"     set nornu
-"   else
-"     let g:relativemode = 1
-"     set rnu
-"   endif
-" endfunc
-
-" nnoremap <C-m> :call NumberToggle()<cr>
 
 filetype plugin indent on
 syntax on

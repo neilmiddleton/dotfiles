@@ -5,7 +5,7 @@ setopt prompt_subst
 
 # PATH
 export GOPATH=~/code/go
-export PATH="/usr/local/share/python:node_modules/.bin:/usr/local/heroku/bin:/usr/local/share/npm/bin:/usr/local/bin:/Users/neil/.rbenv/shims::/Users/neil/.rbenv/bin:$PATH"
+export PATH="node_modules/.bin:/usr/local/heroku/bin:/usr/local/share/npm/bin:/usr/local/bin:/Users/neil/.rbenv/shims::/Users/neil/.rbenv/bin:$PATH"
 export PATH=${GOPATH//://bin:}/bin:$PATH
 # export PATH=$(npm bin):$PATH
 export PGHOST=localhost
@@ -47,13 +47,11 @@ if [[ "$RPS1" == "" && "$RPROMPT" == "" ]]; then
   RPS1='$(vi_mode_prompt_info)'
 fi
 
-
 # Show completion on first TAB
 setopt menucomplete
 
 # Load completions for Ruby, Git, etc.
-autoload -U compinit
-compinit
+autoload -U compinit && compinit
 
 # Allows me to cd into projects
 cdpath=(. ~/code/)
@@ -67,9 +65,6 @@ source "$HOME/.rbenv/completions/rbenv.zsh"
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.history
-
-setopt inc_append_history
-# setopt share_history
 
 # Aliases
 alias ..='cd ..'
@@ -95,6 +90,7 @@ alias nrp='hs addons:open newrelic:professional -a'
 alias vim='/usr/local/Cellar/vim/7.4/bin/vim'
 alias noorig="find . -name '*.orig' -delete"
 alias git='gh'
+alias gphm='git push heroku master'
 
 # includes
 source "/Users/neil/Dropbox/dotfiles/.heroku_shortcuts"

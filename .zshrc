@@ -4,10 +4,10 @@ colors
 setopt prompt_subst
 
 # PATH
-export GOPATH=~/code/go
+export GOPATH="/Users/neil/code/go"
 export PATH="node_modules/.bin:/usr/local/heroku/bin:/usr/local/share/npm/bin:/usr/local/bin:/Users/neil/.rbenv/shims::/Users/neil/.rbenv/bin:$PATH"
-export PATH=${GOPATH//://bin:}/bin:$PATH
-# export PATH=$(npm bin):$PATH
+# export PATH=$PATH:$GOPATH/bin
+
 export PGHOST=localhost
 
 # Prompt
@@ -81,7 +81,6 @@ alias %=' '
 alias flushdns='dscacheutil -flushcache'
 alias h='heroku'
 alias hs='heroku sudo'
-alias git='hub'
 alias gitd='git daemon --reuseaddr --base-path=/Users/neil/code'
 alias new_password='heroku sudo user:send_reset_password_email -u'
 alias gppm='git push production master'
@@ -89,8 +88,10 @@ alias nr='hs addons:open newrelic:standard -a'
 alias nrp='hs addons:open newrelic:professional -a'
 alias vim='/usr/local/Cellar/vim/7.4/bin/vim'
 alias noorig="find . -name '*.orig' -delete"
-alias git='gh'
 alias gphm='git push heroku master'
+alias hks='hk sudo'
+alias bi='bundle install'
+alias ber='bundle exec rspec spec'
 
 # includes
 source "/Users/neil/Dropbox/dotfiles/.heroku_shortcuts"

@@ -1,10 +1,9 @@
-set shell=/bin/zsh
-set runtimepath+=$GOROOT/misc/vim
-
-syntax on
-
 filetype off
 filetype plugin indent off
+set shell=/bin/zsh
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on
 
 imap jj <Esc>
 
@@ -16,24 +15,15 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-" Bundle 'ileszs/ack.vim'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
-" Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/upAndDown'
-" Bundle 'Townk/vim-autoclose'
 Bundle 'tpope/vim-commentary'
-" Bundle 'airblade/vim-gitgutter'
-" Bundle 'tpope/vim-markdown'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'vim-ruby/vim-ruby'
-" Bundle 'tpope/vim-rake'
-" Bundle 'tpope/vim-rails'
-" Bundle 'tpope/vim-bundler'
 Bundle 'tpope/rbenv-ctags'
-" Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'goldfeld/vim-seek'
 Bundle 'tpope/vim-surround'
@@ -42,6 +32,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'mattn/emmet-vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'ggreer/the_silver_searcher'
+Bundle 'jnwhiteh/vim-golang'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important basic setup stuff
@@ -124,8 +115,8 @@ autocmd BufNewFile,BufRead *.thor set filetype=ruby
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
 autocmd BufNewFile,BufRead *.rb set filetype=ruby
 autocmd BufNewFile,BufRead *.ru set filetype=ruby
-
 autocmd FileType ruby set commentstring=#\ %s
+au BufRead,BufNewFile *.go set filetype=go
 
 augroup rubypath
   autocmd!
@@ -134,3 +125,6 @@ augroup END
 
 filetype plugin indent on
 syntax on
+
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
+

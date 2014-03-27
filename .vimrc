@@ -1,11 +1,9 @@
+set encoding=utf-8
 filetype off
 filetype plugin indent off
+set nocompatible
 set shell=/bin/zsh
 set runtimepath+=$GOROOT/misc/vim
-filetype plugin indent on
-syntax on
-
-imap jj <Esc>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic vundle setup
@@ -33,6 +31,7 @@ Bundle 'mattn/emmet-vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'ggreer/the_silver_searcher'
 Bundle 'jnwhiteh/vim-golang'
+Bundle 'vim-scripts/Auto-Pairs'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important basic setup stuff
@@ -52,7 +51,7 @@ set wildchar=<Tab> wildmenu wildmode=full
 " set t_Co=256
 set background=dark
 set mouse=a
-colorscheme solarized
+colorscheme tomorrow-night
 
 set grepprg=ack
 set grepformat=%f:%l:%m
@@ -69,6 +68,7 @@ set shiftround
 set number
 set hlsearch
 set nowrap
+filetype plugin indent on
 syntax on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

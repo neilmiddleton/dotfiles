@@ -20,3 +20,81 @@
 	templatedir = ~/.git_template
 [push]
 	default = simple
+[apply]
+  whitespace   = fix
+[core]
+  excludesfile = /Users/neil/.gitignore
+  editor       = vim
+  whitespace   = fix,space-before-tab,tab-in-indent,trailing-space
+  autocrlf     = input
+[color]
+  ui               = auto ;doesnt work for some reason ...
+  interactive      = true
+  status           = true
+  branch           = true
+  diff             = true
+  [color "branch"]
+  current          = blue bold
+  local            = green
+  remote           = magenta
+  [color "diff"]
+  meta             = blue bold
+  frag             = magenta bold
+  old              = red bold
+  new              = green bold
+  [color "status"]
+  added            = yellow
+  changed          = green
+  untracked        = cyan
+
+[alias]
+  ; Show a short abbreviated status message
+  st  = status -sb
+  ci  = commit
+  co  = checkout
+  br  = branch
+  ; Most common; shows branches pointers and brief message
+  l   = log --pretty=oneline --abbrev-commit --decorate
+  ; Same as l, only in reverse order (oldest -> newest)
+  lr  = log --pretty=oneline --abbrev-commit --decorate --reverse
+  ; Same as l, but don't show merges
+  lm  = log --pretty=oneline --abbrev-commit --decorate --no-merges
+  ; Same as l, but show status (files changed, +/- for each)
+  ls  = log --pretty=oneline --abbrev-commit --decorate --stat
+  ; Custom format:
+  ; - abbreviated comit
+  ; - author name
+  ; - relative time
+  ; - short message
+  ; - branch pointers
+  ; Mostly the same as l with addition of author and date,
+  ; except custom formats don't show color
+  le  = log --pretty=format:"%h%x09%an%x09%ar%x09%s%x09%d"
+  ; Show a nice graph
+  lg  = log --oneline --graph
+  ; Show abbreviated status (so I can see the current branch)
+  ; and fetch origin
+  sf  = !git status -sb && git fetch
+  ; Same as sf, but fetch all remotes
+  sfa = !git status -sb && git fetch --all
+  ; Add via patch
+  p   = add -p
+  ; Show the diff of everything staged
+  ds  = diff --staged
+  s   = status
+  a   = add
+  b   = branch
+  d   = diff
+  v   = show
+  c   = checkout
+  cc  = commit
+  ; Rebase some commits, just take the last 10
+  ri  = rebase -i HEAD~10
+  ; Probably should use this often
+  ro  = !git fetch origin && git reset --hard origin/master
+
+[merge]
+  log = true
+
+[github]
+  user = neilmiddleton

@@ -2,7 +2,6 @@ alias hs="heroku sudo"
 alias h="heroku"
 
 alias ha="hs addons -a "
-# alias hi="hs info -a "
 alias hp="hs ps -a "
 alias hb="hs run bash -a "
 alias hu="hs user:info -x --user "
@@ -28,15 +27,6 @@ extend_boot() {
 
 ao() {
   heroku sudo addons:open $1 -a $2
-}
-
-cloneapp() {
-  hsa $1
-  cd ~/code/tmp
-  hs git:clone -a $1
-  cd $1
-  git fetch
-  hsr $1
 }
 
 alias hrgc="hs repo:gc -a "

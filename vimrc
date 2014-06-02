@@ -33,6 +33,9 @@ Bundle 'ggreer/the_silver_searcher'
 Bundle 'fatih/vim-go'
 Bundle 'vim-scripts/Auto-Pairs'
 Bundle 'elzr/vim-json'
+Bundle 'tpope/vim-heroku'
+Bundle 'tpope/vim-dispatch'
+Bundle 'tpope/vim-fugitive'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important basic setup stuff
@@ -49,7 +52,7 @@ let NERDTreeHijackNetrw=1
 
 set wildchar=<Tab> wildmenu wildmode=full
 
-" set t_Co=256
+set t_Co=256
 set background=dark
 set mouse=a
 colorscheme tomorrow-night

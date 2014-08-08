@@ -19,7 +19,7 @@ Bundle 'ervandew/supertab'
 Bundle 'scrooloose/syntastic'
 Bundle 'vim-scripts/upAndDown'
 Bundle 'tpope/vim-commentary'
-Bundle 'Lokaltog/vim-powerline'
+Bundle 'Lokaltog/powerline'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/rbenv-ctags'
 Bundle 'tpope/vim-unimpaired'
@@ -36,6 +36,7 @@ Bundle 'elzr/vim-json'
 Bundle 'tpope/vim-heroku'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
+Bundle 'mustache/vim-mustache-handlebars'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important basic setup stuff

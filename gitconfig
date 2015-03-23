@@ -14,8 +14,6 @@
 	prompt = false
 [merge]
 	tool = Kaleidoscope
-[core]
-	excludesfile = /Users/neil/.gitignore_global
 [init]
 	templatedir = ~/.git_template
 [push]

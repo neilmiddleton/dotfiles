@@ -3,13 +3,14 @@ filetype off
 filetype plugin indent off
 set nocompatible
 set shell=/bin/zsh
-set runtimepath+=$GOROOT/misc/vim
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Basic vundle setup
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
+imap jk <Esc>
 
 Bundle 'gmarik/vundle'
 
@@ -22,21 +23,21 @@ Bundle 'tpope/vim-commentary'
 Bundle 'Lokaltog/powerline'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/rbenv-ctags'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'goldfeld/vim-seek'
 Bundle 'tpope/vim-surround'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'mattn/emmet-vim'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'ggreer/the_silver_searcher'
-Bundle 'fatih/vim-go'
-Bundle 'vim-scripts/Auto-Pairs'
 Bundle 'elzr/vim-json'
 Bundle 'tpope/vim-heroku'
 Bundle 'tpope/vim-dispatch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'jiangmiao/auto-pairs'
+Bundle "pangloss/vim-javascript"
+Bundle "thoughtbot/vim-rspec"
+Bundle "tpope/vim-dispatch"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important basic setup stuff
@@ -106,11 +107,21 @@ set cc=+1
 " Insert a hash rocket with <c-l>
 imap <c-l> <space>=><space>
 
+" use space to clear searches
+nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
 " Shortcut to rapidly toggle `set list`
 " nmap <leader>l :set list!<CR>
 " Use the same symbols as TextMate for tabstops and EOLs
 set listchars=tab:▸\ ,eol:¬
+
+" RSpec.vim mappings
+let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_runner = "os_x_iterm"
+map <Leader>y :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Setup filetype, path and find
@@ -121,7 +132,6 @@ autocmd BufNewFile,BufRead Gemfile set filetype=ruby
 autocmd BufNewFile,BufRead *.rb set filetype=ruby
 autocmd BufNewFile,BufRead *.ru set filetype=ruby
 autocmd FileType ruby set commentstring=#\ %s
-au BufRead,BufNewFile *.go set filetype=go
 
 augroup rubypath
   autocmd!
@@ -131,11 +141,10 @@ augroup END
 filetype plugin indent on
 syntax on
 
-" autocmd FileType go autocmd BufWritePre <buffer> Fmt
-au Filetype go nnoremap <buffer> <leader>i :exe 'GoImport ' . expand('<cword>')<CR>
-au Filetype go nnoremap <leader>r :GoRun %<CR>
-au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
-au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
-au Filetype go nnoremap <leader>y :tab split <CR>:exe "GoDef"<CR>
-
 let g:vim_json_syntax_conceal = 0
+
+let g:syntastic_mode_map={ 'mode': 'active',
+                     \ 'active_filetypes': [],
+                     \ 'passive_filetypes': ['html'] }
+
+let g:syntastic_javascript_jshint_conf = $HOME . '/.jshintrc'

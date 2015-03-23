@@ -1,0 +1,25 @@
+#!/bin/bash
+CURRENT_SESSION=${PWD##*/}
+
+tmux has-session -t $CURRENT_SESSION 2>/dev/null
+if [ "$?" -eq 1 ]; then
+  echo 'No Session Found.  Creating...'
+  # Start up the tmux session with specific name
+  tmux new -d -s $CURRENT_SESSION
+
+  # VIM window
+  tmux send-keys 'vim' 'C-m'
+  tmux rename-window vim
+
+  # ZSH window
+  tmux new-window
+  tmux rename-window zsh
+
+  # Select the first window
+  tmux select-window -t 1
+else
+  echo 'Session Found.  Connecting...'
+fi
+
+# Attach the tmux session
+tmux attach -t $CURRENT_SESSION

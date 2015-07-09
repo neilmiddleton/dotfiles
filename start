@@ -16,7 +16,7 @@ if [ "$?" -eq 1 ]; then
   tmux rename-window zsh
 
   # Select the first window
-  tmux select-window -t 1
+  tmux select-window -t 0
 else
   echo 'Session Found.  Connecting...'
 fi

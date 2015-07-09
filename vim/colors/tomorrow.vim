@@ -4,8 +4,8 @@
 " Hex colour conversion functions borrowed from the theme "Desert256""
 
 " Default GUI Colours
-let s:foreground = "4d4d4c"
-let s:background = "fafafa"
+let s:foreground = "000000"
+let s:background = "ffffff"
 let s:selection = "d6d6d6"
 let s:line = "efefef"
 let s:comment = "8e908c"

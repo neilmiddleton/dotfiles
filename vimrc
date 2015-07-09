@@ -38,6 +38,8 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle "pangloss/vim-javascript"
 Bundle "thoughtbot/vim-rspec"
 Bundle "tpope/vim-dispatch"
+Bundle "mxw/vim-jsx"
+Bundle "slim-template/vim-slim"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Important basic setup stuff
@@ -57,7 +59,7 @@ set wildchar=<Tab> wildmenu wildmode=full
 set t_Co=256
 set background=dark
 set mouse=a
-colorscheme tomorrow-night
+colorscheme tomorrow
 
 set grepprg=ack
 set grepformat=%f:%l:%m
@@ -116,7 +118,7 @@ nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 set listchars=tab:▸\ ,eol:¬
 
 " RSpec.vim mappings
-let g:rspec_command = "Dispatch rspec {spec}"
+let g:rspec_command = "!bundle exec rspec {spec}"
 let g:rspec_runner = "os_x_iterm"
 map <Leader>y :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
@@ -146,5 +148,6 @@ let g:vim_json_syntax_conceal = 0
 let g:syntastic_mode_map={ 'mode': 'active',
                      \ 'active_filetypes': [],
                      \ 'passive_filetypes': ['html'] }
+let g:syntastic_javascript_checkers = ['jsxhint']
 
 let g:syntastic_javascript_jshint_conf = $HOME . '/.jshintrc'
